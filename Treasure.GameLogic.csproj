@@ -14,6 +14,7 @@
     <Version>1.0.1</Version>
     <Authors>DCNick3</Authors>
     <PackageLicenseExpression>GPL-3.0-or-later</PackageLicenseExpression>
+    <PackageProjectUrl>https://github.com/DCNick3/Treasure.GameLogic</PackageProjectUrl>
   </PropertyGroup>
   
   <ItemGroup>
