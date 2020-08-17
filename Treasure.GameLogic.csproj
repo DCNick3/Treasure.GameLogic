@@ -13,6 +13,7 @@
     <PackageId>Treasure.GameLogic</PackageId>
     <Version>1.0.1</Version>
     <Authors>DCNick3</Authors>
+    <PackageLicenseExpression>GPL-3.0-or-later</PackageLicenseExpression>
   </PropertyGroup>
   
   <ItemGroup>
