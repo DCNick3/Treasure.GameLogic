@@ -27,7 +27,7 @@ namespace Treasure.GameLogic.State
             GameField = gameField;
             PlayerStates = playerStates;
             Winner = winner;
-            History = new GameHistory();
+            History = history;
 
             Debug.Assert(PlayerStates.Length == gameField.Parameters.PlayerCount);
         }
