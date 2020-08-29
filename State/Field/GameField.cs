@@ -69,5 +69,12 @@ namespace Treasure.GameLogic.State.Field
                 _ => throw new ArgumentOutOfRangeException(nameof(direction), direction, null)
             };
         }
+
+        public static GameField FromString(GameFieldParams @params, string data)
+        {
+            var b = new GameFieldBuilder(@params);
+            b.LoadString(data);
+            return b.Build();
+        }
     }
 }

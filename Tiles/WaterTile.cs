@@ -1,3 +1,4 @@
+using System;
 using Treasure.GameLogic.Message;
 using Treasure.GameLogic.State.Field;
 
@@ -38,5 +39,14 @@ namespace Treasure.GameLogic.Tiles
             messageBuilder.Water();
             return toPosition;
         }
+        
+        public override string Stringify() => "W" + FlowDirection switch
+        {
+            Direction.Up => 'U', 
+            Direction.Left => 'L',
+            Direction.Down => 'D',
+            Direction.Right => 'R', 
+            _ => throw new ArgumentException()
+        };
     }
 }

@@ -21,5 +21,7 @@ namespace Treasure.GameLogic.Tiles
             messageBuilder.Home(PlayerIndex);
             return toPosition;
         }
+
+        public override string Stringify() => $"H{(PlayerIndex == 0 ? "" : PlayerIndex.ToString())}";
     }
 }

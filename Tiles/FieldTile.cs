@@ -16,5 +16,7 @@ namespace Treasure.GameLogic.Tiles
             messageBuilder.Field();
             return toPosition;
         }
+
+        public override string Stringify() => "F";
     }
 }

@@ -13,5 +13,7 @@ namespace Treasure.GameLogic.Tiles
             messageBuilder.Swamp();
             return fromPosition;
         }
+
+        public override string Stringify() => "S";
     }
 }

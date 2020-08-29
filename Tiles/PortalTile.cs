@@ -26,5 +26,7 @@ namespace Treasure.GameLogic.Tiles
             messageBuilder.Portal(PortalNumber);
             return toPosition;
         }
+
+        public override string Stringify() => $"P{(PortalNumber == 0 ? "" : PortalNumber.ToString())}";
     }
 }

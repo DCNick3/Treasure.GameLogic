@@ -14,6 +14,11 @@ namespace Treasure.GameLogic
         public readonly int X;
         public readonly int Y;
 
+        public Point((int, int) xy)
+        {
+            (X, Y) = xy;
+        }
+
         // ReSharper disable once InconsistentNaming
         public (int, int) XY => (X, Y);
         
@@ -94,5 +99,10 @@ namespace Treasure.GameLogic
             return $"({X}, {Y})";
         }
 
+        public void Deconstruct(out int x, out int y)
+        {
+            x = X;
+            y = Y;
+        }
     }
 }

@@ -2,6 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.Collections.Immutable;
 using System.Linq;
+using System.Text;
 using Microsoft.Collections.Extensions;
 using Treasure.GameLogic.Message;
 
@@ -97,6 +98,8 @@ namespace Treasure.GameLogic.State.Field
             // then check that all homes belong to it
             // then check that it's actually a strongly-connected component (by counting from how many nodes one can get to treasure)
             // this makes sure that it's impossible to get stuck somewhere on the map
+            // it is a sufficient, but not required condition for map to be passable
+            // that is, there are passable maps not satisfying the criteria, but no unpassable maps that do not 
 
             var visitedNodes = new HashSet<Point>();
             // key - edge destination, value - edge source
@@ -142,6 +145,56 @@ namespace Treasure.GameLogic.State.Field
                 return false;
 
             return true;
+        }
+
+        public string Stringify()
+        {
+            // Does not content field parameters (will be required in order to load the field
+            // first line contains tile data
+            // second line contains horizontal walls
+            // third line contains vertical walls
+            var sb = new StringBuilder();
+            for (var i = 0;i < Width; i++)
+            for (var j = 0; j < Height; j++)
+            {
+                var t = GetTileAt(i, j);
+                sb.Append(t.Stringify());
+            }
+            sb.AppendLine();
+            
+            for (var i = 0; i < Width + 1; i++)
+            for (var j = 0; j < Height; j++)
+            {
+                var wall = GetVerticalWall(i, j);
+                sb.Append(wall switch
+                {
+                    WallType.None => "N",
+                    WallType.Breakable => "B",
+                    WallType.Unbreakable => "U",
+                    WallType.Grate => "G",
+                    _ => throw new ArgumentException()
+                });
+            }
+            sb.AppendLine();
+            
+            for (var i = 0; i < Width; i++)
+            for (var j = 0; j < Height + 1; j++)
+            {
+                var wall = GetHorizontalWall(i, j);
+                sb.Append(wall switch
+                {
+                    WallType.None => "N",
+                    WallType.Breakable => "B",
+                    WallType.Unbreakable => "U",
+                    WallType.Grate => "G",
+                    _ => throw new ArgumentException()
+                });
+            }
+            sb.AppendLine();
+
+            sb.AppendLine($"{TreasurePosition.X} {TreasurePosition.Y}");
+
+            return sb.ToString();
         }
     }
 }
