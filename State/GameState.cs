@@ -129,7 +129,7 @@ namespace Treasure.GameLogic.State
 
             newPlayerStates = PropagateDeaths(deadPlayers, newPlayerStates);
             
-            var newHistory = NewHistory(PlayerAction.ActionType.Move, direction, null, newCurrentPlayer);
+            var newHistory = NewHistory(PlayerAction.ActionType.Shoot, direction, null, newCurrentPlayer);
             
             return new GameState(newCurrentPlayer, newGameField, newPlayerStates, Winner, newHistory);
         }
